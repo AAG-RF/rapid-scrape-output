@@ -6,10 +6,6 @@ export async function POST(req: Request) {
   const { prompt, source }: { prompt: string; source: string } =
     await req.json();
 
-  if (!source.startsWith("https://en.wikipedia.org/wiki/")) {
-    throw new Error("Invalid source URL");
-  }
-
   const content = await fetch(source);
 
   const text = await content.text();
